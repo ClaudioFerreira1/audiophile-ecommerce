@@ -29,6 +29,7 @@ body {
   /* setting up variables */
   --clr-dark-orange: rgba(216, 125, 74, 1);
   --clr-lighter-orange: rgba(251, 175, 133, 1);
+  --clr-first-dark: rgba(14, 14, 14, 1);
   --clr-second-dark: rgba(16, 16, 16, 1);
   --clr-lighter-grey: rgba(241, 241, 241, 1);
   --clr-second-white: rgba(250, 250, 250, 1);

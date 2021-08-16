@@ -170,7 +170,6 @@ const Wrapper = styled.footer`
     bottom: 0;
   }
 }
-
 `
 
 export default Footer
