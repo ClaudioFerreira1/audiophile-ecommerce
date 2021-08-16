@@ -1,14 +1,40 @@
 import React, { useEffect, useContext, useReducer } from 'react'
 import reducer from './reducer'
-import './actions.js'
+import {
+  CART_MODAL_OPEN,
+  CART_MODAL_CLOSE,
+  SIDEBAR_OPEN,
+  SIDEBAR_CLOSE
+} from './actions.js'
 
-const initialState = {}
+const initialState = {
+  isCartModalOpen: false,
+  isSideBarOpen: false,
+}
 
 const AppContext = React.createContext()
 
 export const AppProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+  const openCartModal = () => {
+    // document.body.style.overflow = 'hidden';
+    dispatch({ type: CART_MODAL_OPEN })
+  }
+  const closeCartModal = () => {
+    dispatch({ type: CART_MODAL_CLOSE })
+  }
+  const openSideBar = () => {
+    document.body.style.overflow = 'hidden';
+    dispatch({ type: SIDEBAR_OPEN })
+  }
+  const closeSideBar = () => {
+    document.body.style.overflow = 'unset';
+    dispatch({ type: SIDEBAR_CLOSE })
+  }
+
   return (
-    <AppContext.Provider value='app context'>{children}</AppContext.Provider>
+    <AppContext.Provider value={{ ...state, openCartModal, closeCartModal, openSideBar, closeSideBar }}>{children}</AppContext.Provider>
   )
 }
 

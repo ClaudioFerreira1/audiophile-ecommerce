@@ -3,8 +3,15 @@ import styled from 'styled-components'
 
 const Home = () => {
   return (
-    <h1>Home</h1>
+    <Wrapper>
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.div`
+  width: 100%;
+  height: 700px;
+  background-color: green;
+`
 
 export default Home

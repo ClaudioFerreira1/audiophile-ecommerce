@@ -1,18 +1,20 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { Navbar, Sidebar, Footer } from './components'
+import { Navbar, Sidebar, Footer, CartModal } from './components'
 // import { Home, Headphones, Speakers, Earphones, SingleProduct, Checkout, Error } from './pages'
+import { Home } from './pages'
 
 const App = () => {
   return (
     <Router>
       <Navbar />
       <Sidebar />
+      <CartModal />
       <Switch>
-        {/* <Route exact path='/'>
+        <Route exact path='/'>
           <Home />
         </Route>
-        <Route exact path='/headphones'>
+        {/* <Route exact path='/headphones'>
           <Headphones />
         </Route>
         <Route exact path='/speakers'>

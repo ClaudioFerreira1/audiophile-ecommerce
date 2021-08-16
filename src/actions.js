@@ -1,3 +1,5 @@
+export const CART_MODAL_OPEN = 'CART_MODAL_OPEN'
+export const CART_MODAL_CLOSE = 'CART_MODAL_CLOSE'
 export const SIDEBAR_OPEN = 'SIDEBAR_OPEN'
 export const SIDEBAR_CLOSE = 'SIDEBAR_CLOSE'
 export const ADD_TO_CART = 'ADD_TO_CART'

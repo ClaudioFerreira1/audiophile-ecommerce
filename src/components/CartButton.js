@@ -1,11 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import { useGlobalContext } from '../context'
 import cartIcon from '../assets/shared/desktop/icon-cart.svg'
 
 const CartButton = () => {
+  const { openCartModal } = useGlobalContext();
+
   return (
-    <CartBtn>
+    <CartBtn onClick={openCartModal}>
       <img src={cartIcon} alt="cart icon" />
       <span className='cart-value'>12</span>
     </CartBtn>

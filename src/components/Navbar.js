@@ -8,9 +8,11 @@ import hamburguerIcon from '../assets/shared/tablet/icon-hamburger.svg'
 import CartButton from './CartButton'
 
 const Navbar = () => {
+  const { openSideBar } = useGlobalContext();
+
   return (<NavElement>
     <div className="main-div-navbar">
-      <button>
+      <button onClick={openSideBar}>
         <img className="hamburguer-icon" src={hamburguerIcon} alt="hamburguer icon" />
       </button>
       <Link to='/' className="anchor-logo">
