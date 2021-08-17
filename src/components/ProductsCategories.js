@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { useGlobalContext } from '../context'
 import firstImage from '../assets/shared/desktop/image-headphones.png'
 import secondImage from '../assets/shared/desktop/image-speakers.png'
 import thirdImage from '../assets/shared/desktop/image-earphones.png'
@@ -8,22 +9,24 @@ import arrowRight from '../assets/shared/desktop/icon-arrow-right.svg'
 
 
 const ProductsCategories = () => {
+  const { isSideBarOpen, closeSideBar } = useGlobalContext();
+
   return (<Wrapper>
     <div className="main-div-categories">
       <div className="categories-block">
-        <Link to='/headphones' className="div-category">
+        <Link to='/headphones' className="div-category" onClick={isSideBarOpen ? closeSideBar : null}>
           <img src={firstImage} alt="headphone" />
           <h3>Headphones</h3>
           <span>Shop</span>
           <img src={arrowRight} alt="arrow-right" />
         </Link>
-        <Link to='/speakers' className="div-category">
+        <Link to='/speakers' className="div-category" onClick={isSideBarOpen ? closeSideBar : null}>
           <img src={secondImage} alt="speaker" />
           <h3>Speakers</h3>
           <span>Shop</span>
           <img src={arrowRight} alt="arrow-right" />
         </Link>
-        <Link to='/earphones' className="div-category">
+        <Link to='/earphones' className="div-category" onClick={isSideBarOpen ? closeSideBar : null}>
           <img src={thirdImage} alt="earphone" />
           <h3>Earphones</h3>
           <span>Shop</span>
@@ -104,6 +107,32 @@ const Wrapper = styled.div`
     position: relative;
     top: -8rem;
     margin-left: 6.2rem;
+  }
+
+  .div-category img[alt~="speaker"] {
+    top: -6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .div-category img[alt~="earphone"] {
+    top: -4.8rem;
+    margin-bottom: 1.75rem;
+  }
+
+  @media (min-width: 600px) {
+    .categories-block {
+      flex-direction: row;
+      column-gap: 2.5vw;
+    }
+
+    .div-category {
+      width: 29vw;
+    }
+
+    .main-div-categories {
+      padding-top: 10.8rem;
+    }
+
   }
 
 `
