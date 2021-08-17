@@ -1,3 +1,4 @@
+// import React, { useEffect, useContext, useReducer } from 'react'
 import {
   CART_MODAL_OPEN,
   CART_MODAL_CLOSE,
@@ -18,6 +19,8 @@ const reducer = (state, action) => {
   if (action.type === SIDEBAR_CLOSE) {
     return { ...state, isSideBarOpen: false }
   }
+
+
   throw new Error(`No Matching "${action.type}" - action type`)
 }
 

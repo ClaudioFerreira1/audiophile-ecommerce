@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useGlobalContext } from '../context'
+import ProductsCategories from './ProductsCategories'
 
 const Sidebar = () => {
   const { isSideBarOpen, closeSideBar } = useGlobalContext();
@@ -9,6 +10,7 @@ const Sidebar = () => {
     <Wrapper>
       <div className={`${isSideBarOpen ? 'modal-overlay show-modal' : 'modal-overlay'}`} onClick={closeSideBar} id="sidebar-modal-overlay">
         <div className="modal-container" onClick={(e) => e.stopPropagation()}>
+          <ProductsCategories />
         </div>
       </div>
     </Wrapper>

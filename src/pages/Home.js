@@ -11,7 +11,7 @@ const Home = () => {
 const Wrapper = styled.div`
   width: 100%;
   height: 700px;
-  background-color: green;
+  background-color: white;
 `
 
 export default Home

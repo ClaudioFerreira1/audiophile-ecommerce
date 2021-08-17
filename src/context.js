@@ -9,8 +9,9 @@ import {
 
 const initialState = {
   isCartModalOpen: false,
-  isSideBarOpen: false,
+  isSideBarOpen: true,
 }
+
 
 const AppContext = React.createContext()
 
@@ -22,7 +23,11 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: CART_MODAL_OPEN })
   }
   const closeCartModal = () => {
-    document.body.style.overflow = 'unset';
+    if (state.isSideBarOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
     dispatch({ type: CART_MODAL_CLOSE })
   }
   const openSideBar = () => {
