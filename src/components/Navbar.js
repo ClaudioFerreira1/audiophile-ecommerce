@@ -5,17 +5,18 @@ import { useGlobalContext } from '../context'
 import logo from '../assets/shared/desktop/logo.svg'
 import arrowRight from '../assets/shared/desktop/icon-arrow-right.svg'
 import hamburguerIcon from '../assets/shared/tablet/icon-hamburger.svg'
+import closeIcon from '../assets/shared/tablet/close-icon.svg'
 import CartButton from './CartButton'
 
 const Navbar = () => {
-  const { openSideBar } = useGlobalContext();
+  const { openSideBar, isSideBarOpen, closeSideBar } = useGlobalContext();
 
   return (<NavElement>
     <div className="main-div-navbar">
-      <button onClick={openSideBar}>
-        <img className="hamburguer-icon" src={hamburguerIcon} alt="hamburguer icon" />
+      <button onClick={isSideBarOpen ? closeSideBar : openSideBar}>
+        <img className="hamburguer-icon" src={isSideBarOpen ? closeIcon : hamburguerIcon} alt="hamburguer icon" />
       </button>
-      <Link to='/' className="anchor-logo">
+      <Link to='/' className="anchor-logo" onClick={isSideBarOpen ? closeSideBar : null}>
         <img src={logo} alt='audiophile logo' />
       </Link>
       <ul className="links-div">

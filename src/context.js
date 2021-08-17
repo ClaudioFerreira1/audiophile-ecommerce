@@ -18,14 +18,16 @@ export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   const openCartModal = () => {
-    // document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
     dispatch({ type: CART_MODAL_OPEN })
   }
   const closeCartModal = () => {
+    document.body.style.overflow = 'unset';
     dispatch({ type: CART_MODAL_CLOSE })
   }
   const openSideBar = () => {
     document.body.style.overflow = 'hidden';
+    // document.getElementById("sidebar-modal-overlay").style.overflow = "hidden";
     dispatch({ type: SIDEBAR_OPEN })
   }
   const closeSideBar = () => {

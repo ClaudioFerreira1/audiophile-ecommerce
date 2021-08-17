@@ -9,7 +9,8 @@ const CartModal = () => {
   return (
     <ModalOverlay>
       <div className={`${isCartModalOpen ? 'modal-overlay show-modal' : 'modal-overlay'}`} onClick={closeCartModal}>
-        <div className="modal-container" onClick={(e) => e.stopPropagation()}></div>
+        <div className="modal-container" onClick={(e) => e.stopPropagation()}>
+        </div>
       </div>
     </ModalOverlay>)
 }
@@ -22,8 +23,9 @@ const ModalOverlay = styled.div`
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  display: grid;
-  place-items: center;
+  /* display: grid;
+  place-items: center; */
+  padding-top: 11.4rem;
   transition: all 0.3s linear;
   visibility: hidden;
   z-index: -1;
@@ -39,12 +41,15 @@ const ModalOverlay = styled.div`
   border-radius: 0.8rem;
   width: 32.7rem;
   height: 48.8rem;
+  max-height: calc(100% - 2.2rem);
+  overflow-y: auto;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 11.4rem;
+  margin-bottom: 2.4rem;
+  /* margin-top: 11.4rem; */
   }
 
-@media (min-width: 860px) {
+@media (min-width: 720px) {
   .modal-container {
     width: 37.7rem;
     height: 48.8rem;
