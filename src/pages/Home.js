@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import ProductsCategories from "../components/ProductsCategories.js"
 import backgroundMobile from "../assets/home/mobile/image-header.jpg"
 import backgroundTablet from "../assets/home/tablet/image-header.jpg"
 import backgroundDesktop from "../assets/home/desktop/image-hero.jpg"
@@ -20,11 +21,20 @@ const Home = () => {
           </div>
         </Link>
       </div>
+      <div className="products-categories">
+        <ProductsCategories />
+      </div>
+
     </Wrapper>
   )
 }
 
 const Wrapper = styled.section`
+
+  .products-categories {
+    margin-top: -6.25rem;
+  }
+
   .mark-two-background {
     width: 100%;
     background-color: #191919;
@@ -98,6 +108,12 @@ const Wrapper = styled.section`
     }
   }
 
+  @media (min-width: 600px) {
+    .products-categories {
+      margin-top: -4rem;
+    }
+  }
+
   @media (min-width: 630px) {
     .mark-two-background {
       background-size: contain;
@@ -116,6 +132,11 @@ const Wrapper = styled.section`
   }
 
   @media (min-width: 860px) {
+
+    .products-categories {
+      margin-top: -4rem;
+    }
+
     .mark-two-background {
       background-image: url(${backgroundDesktop});
       background-size: cover;

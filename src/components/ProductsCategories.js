@@ -53,6 +53,7 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     row-gap: 6.8rem;
+    max-width: 111rem;
   }
 
   .div-category {
@@ -134,6 +135,7 @@ const Wrapper = styled.div`
     }
 
   }
+
 
 `
 
