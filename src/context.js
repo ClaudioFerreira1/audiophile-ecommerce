@@ -9,7 +9,7 @@ import {
 
 const initialState = {
   isCartModalOpen: false,
-  isSideBarOpen: true,
+  isSideBarOpen: false,
 }
 
 

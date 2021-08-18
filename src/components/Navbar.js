@@ -32,7 +32,8 @@ const Navbar = () => {
 }
 
 const NavElement = styled.nav`
-  background-color: var(--clr-first-dark);
+  background-color: transparent;
+  /* background-color: #191919; */
   width: 100%;
   height: 9rem;
 
@@ -91,6 +92,7 @@ const NavElement = styled.nav`
     justify-content: space-between;
     column-gap: 3.4rem;
     margin-bottom: 0.15rem;
+    margin-left: -5rem;
     padding-right: 5rem;
   }
 
