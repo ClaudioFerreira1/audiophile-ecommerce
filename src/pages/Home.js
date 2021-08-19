@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import ProductsCategories from "../components/ProductsCategories.js"
 import ZX9HomeComponent from "../components/ZX9HomeComponent.js"
+import ZX7HomeComponent from "../components/ZX7HomeComponent.js"
 import backgroundMobile from "../assets/home/mobile/image-header.jpg"
 import backgroundTablet from "../assets/home/tablet/image-header.jpg"
 import backgroundDesktop from "../assets/home/desktop/image-hero.jpg"
@@ -26,6 +27,7 @@ const Home = () => {
         <ProductsCategories />
       </div>
       <ZX9HomeComponent />
+      <ZX7HomeComponent />
     </Wrapper>
   )
 }
@@ -118,6 +120,11 @@ const Wrapper = styled.main`
   @media (min-width: 630px) {
     .mark-two-background {
       background-size: contain;
+      height: 72.9rem;
+    }
+
+    .image-header-description {
+      margin-top: -62rem;
     }
 
     .image-header-description h2 {
@@ -132,9 +139,9 @@ const Wrapper = styled.main`
     }
   }
 
-  @media (min-width: 860px) {
+  @media (min-width: 1040px) {
     .products-categories {
-      margin-top: -4rem;
+      margin-top: -8rem;
     }
 
     .mark-two-background {
@@ -145,7 +152,7 @@ const Wrapper = styled.main`
     }
     
     .image-header-description {
-      margin-top: -50.2rem;
+      margin-top: -58rem;
       left: 0;
       margin-left: 4rem;
       align-items: flex-start;
@@ -161,7 +168,7 @@ const Wrapper = styled.main`
     }
   }
 
-  @media (min-width: 1180px) {
+  @media (min-width: 1250px) {
     .mark-two-background {
       background-size: contain;
     }

@@ -85,7 +85,7 @@ const Wrapper = styled.div`
   @media (min-width: 600px) {
     margin-top: 5rem;
     width: 92%;
-    max-width: 70.653rem;
+    max-width: unset;
     background-position: 50% 194%;
     background-size: 120%;
     height: 72rem;
@@ -110,7 +110,7 @@ const Wrapper = styled.div`
   }
 
   @media (min-width: 1080px) {
-    margin-top: 12rem;
+    margin-top: 8rem;
     max-width: 111rem;
     flex-direction: row;
     column-gap: 13.8rem;
@@ -139,7 +139,6 @@ const Wrapper = styled.div`
     .ZX9-description-div p {
       margin-bottom: 2rem;
     }
-
   }
 
 `

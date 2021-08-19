@@ -32,8 +32,8 @@ const Navbar = () => {
 }
 
 const NavElement = styled.nav`
-  background-color: transparent;
-  /* background-color: #191919; */
+  /* background-color: transparent; */
+  background-color: #191919;
   width: 100%;
   height: 9rem;
 

@@ -35,7 +35,7 @@ const Footer = () => {
 }
 
 const Wrapper = styled.footer`
-  background-color: var(--clr-second-dark);
+  background-color: #191919;
   width: 100%;
   height: 36.5rem;
   position: relative;
