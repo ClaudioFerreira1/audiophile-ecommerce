@@ -150,7 +150,7 @@ h6 {
   color: #D87D4A;
 }
 
-.btn-1 {
+.orange-button {
   width: 16rem;
   height: 48px;
   background: #D87D4A;
@@ -168,6 +168,23 @@ h6 {
 }
 
 
-.btn-1:hover {
+.orange-button:hover {
   background: #FBAF85;
+}
+
+.black-button {
+  width: 16rem;
+  height: 48px;
+  background: black;
+  color: white;
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

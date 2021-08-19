@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import ProductsCategories from "../components/ProductsCategories.js"
+import ZX9HomeComponent from "../components/ZX9HomeComponent.js"
 import backgroundMobile from "../assets/home/mobile/image-header.jpg"
 import backgroundTablet from "../assets/home/tablet/image-header.jpg"
 import backgroundDesktop from "../assets/home/desktop/image-hero.jpg"
@@ -16,7 +17,7 @@ const Home = () => {
         <h2>XX99 Mark II HeadphoneS</h2>
         <p>Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.</p>
         <Link to="/product/xx99-mark-two-headphones">
-          <div className="btn-1">
+          <div className="orange-button">
             See Product
           </div>
         </Link>
@@ -24,12 +25,12 @@ const Home = () => {
       <div className="products-categories">
         <ProductsCategories />
       </div>
-
+      <ZX9HomeComponent />
     </Wrapper>
   )
 }
 
-const Wrapper = styled.section`
+const Wrapper = styled.main`
 
   .products-categories {
     margin-top: -6.25rem;
@@ -110,7 +111,7 @@ const Wrapper = styled.section`
 
   @media (min-width: 600px) {
     .products-categories {
-      margin-top: -4rem;
+      margin-top: -9rem;
     }
   }
 
@@ -132,7 +133,6 @@ const Wrapper = styled.section`
   }
 
   @media (min-width: 860px) {
-
     .products-categories {
       margin-top: -4rem;
     }
