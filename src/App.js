@@ -1,8 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Navbar, Sidebar, Footer, CartModal } from './components'
-// import { Home, Headphones, Speakers, Earphones, SingleProduct, Checkout, Error } from './pages'
-import { Home } from './pages'
+import { Home, Headphones, Speakers, Earphones, SingleProduct, Checkout, Error } from './pages'
 
 const App = () => {
   return (
@@ -14,10 +13,10 @@ const App = () => {
         <Route exact path='/'>
           <Home />
         </Route>
-        {/* <Route exact path='/headphones'>
+        <Route exact path='/headphones'>
           <Headphones />
         </Route>
-        <Route exact path='/speakers'>
+        {/* <Route exact path='/speakers'>
           <Speakers />
         </Route>
         <Route exact path='/earphones'>

@@ -1,3 +1,7 @@
 import Home from './Home'
+import Headphones from './Headphones'
 
-export { Home }
+export {
+  Home,
+  Headphones,
+}
