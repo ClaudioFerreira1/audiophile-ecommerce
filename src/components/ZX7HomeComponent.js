@@ -34,6 +34,10 @@ const Wrapper = styled.div`
   background-size: 100%;
   background-color: #DCDCDC;
 
+  a {
+    width: 16rem;
+  }
+
   .zx7-description {
     position: absolute;
     margin-top: 10.1rem;
@@ -45,7 +49,7 @@ const Wrapper = styled.div`
 
   @media (min-width: 600px) {
     background: url(${ZX7tablet});
-    margin-top: 3.2rem;
+    margin-top: 2.4rem;
     width: 92%;
     max-width: unset;
     background-repeat: no-repeat;

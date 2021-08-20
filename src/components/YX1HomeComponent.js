@@ -33,7 +33,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 2.4rem;
-  margin-bottom: 2.4rem;
+  /* margin-bottom: 2.4rem; */
   
   .yx1-background {
     background: url(${YX1mobile});

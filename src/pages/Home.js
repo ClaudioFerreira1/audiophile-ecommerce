@@ -5,6 +5,7 @@ import ProductsCategories from "../components/ProductsCategories.js"
 import ZX9HomeComponent from "../components/ZX9HomeComponent.js"
 import ZX7HomeComponent from "../components/ZX7HomeComponent.js"
 import YX1HomeComponent from "../components/YX1HomeComponent.js"
+import BringingYouTheBest from "../components/BringingYouTheBest.js"
 import backgroundMobile from "../assets/home/mobile/image-header.jpg"
 import backgroundTablet from "../assets/home/tablet/image-header.jpg"
 import backgroundDesktop from "../assets/home/desktop/image-hero.jpg"
@@ -30,6 +31,7 @@ const Home = () => {
       <ZX9HomeComponent />
       <ZX7HomeComponent />
       <YX1HomeComponent />
+      <BringingYouTheBest />
     </Wrapper>
   )
 }
