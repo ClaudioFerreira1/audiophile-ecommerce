@@ -12,7 +12,7 @@ const ProductsCategories = () => {
   const { isSideBarOpen, closeSideBar } = useGlobalContext();
 
   return (<Wrapper>
-    <div className="main-div-categories">
+    <div className="main-div-categories" id="categories-div">
       <div className="categories-block">
         <Link to='/headphones' className="div-category" onClick={isSideBarOpen ? closeSideBar : null}>
           <img src={firstImage} alt="headphone" />
