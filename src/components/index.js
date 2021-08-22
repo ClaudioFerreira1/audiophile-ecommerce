@@ -4,6 +4,8 @@ import Footer from './Footer'
 import CartModal from './CartModal'
 import ZX9HomeComponent from './ZX9HomeComponent'
 import ScrollToTop from './ScrollToTop'
+import AmountButton from './AmountButton'
+
 
 export {
   Navbar,
@@ -11,5 +13,6 @@ export {
   Footer,
   CartModal,
   ZX9HomeComponent,
-  ScrollToTop
+  ScrollToTop,
+  AmountButton
 }

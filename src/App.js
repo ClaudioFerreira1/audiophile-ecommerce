@@ -23,8 +23,8 @@ const App = () => {
           <Route exact path='/earphones'>
             <Earphones />
           </Route>
-          {/* <Route exact path='/product/:slug' children={<SingleProduct />} />
-        <Route exact path='/checkout'>
+          <Route exact path='/product/:slug' children={<SingleProduct />} />
+          {/* <Route exact path='/checkout'>
           <Checkout />
         </Route>
         <Route path='*'>

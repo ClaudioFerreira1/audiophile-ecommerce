@@ -215,3 +215,7 @@ h6 {
   background: black;
   color: white;
 }
+
+.opacity {
+  opacity: 0.5;
+}
