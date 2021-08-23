@@ -3,12 +3,16 @@ import styled from 'styled-components'
 import { useParams, useHistory } from 'react-router-dom'
 import data from '../data/data.json'
 import AmountButton from '../components/AmountButton'
+import BringingYouTheBest from "../components/BringingYouTheBest.js"
+import ProductsCategories from "../components/ProductsCategories.js"
+import { Link } from 'react-router-dom'
 
 const SingleProduct = () => {
   const [size, setSize] = useState(window.innerWidth);
   const [amount, setAmount] = useState(1)
   const { slug } = useParams();
   var currentProduct = data.find(product => product.slug === slug);
+  let history = useHistory();
 
   const checkSize = () => {
     setSize(window.innerWidth);
@@ -27,7 +31,9 @@ const SingleProduct = () => {
     price,
     cartImage,
     includes,
-    features
+    features,
+    gallery: { first, second, third },
+    others,
   } = currentProduct;
 
   const increase = () => {
@@ -49,7 +55,7 @@ const SingleProduct = () => {
 
 
   return (<Wrapper>
-    <button type='button' className="go-back">Go Back</button>
+    <button type='button' className="go-back" onClick={() => history.goBack()}>Go Back</button>
     <div className="product-detail">
       <img src={size >= 1050 ? desktop.replace("./assets", "") : size >= 700 ? tablet.replace("./assets", "") : mobile.replace("./assets", "")} alt="product" />
       <div className="product-detail-description">
@@ -79,10 +85,102 @@ const SingleProduct = () => {
         </div>
       </div>
     </div>
+    <div className="product-galery">
+      <div className="product-galery-first">
+        <img src={size >= 1050 ? first.desktop.replace("./assets", "") : size >= 700 ? first.tablet.replace("./assets", "") : first.mobile.replace("./assets", "")} alt="gallery 1" />
+        <img src={size >= 1050 ? second.desktop.replace("./assets", "") : size >= 700 ? second.tablet.replace("./assets", "") : second.mobile.replace("./assets", "")} alt="gallery 2" />
+      </div>
+      <div className="product-galery-second">
+        <img src={size >= 1050 ? third.desktop.replace("./assets", "") : size >= 700 ? third.tablet.replace("./assets", "") : third.mobile.replace("./assets", "")} alt="gallery 3" />
+      </div>
+    </div>
+    <div className="product-recomendation-div">
+      <h5>You may also like</h5>
+      <div className="only-the-recommendations">
+        {others.map((product) => {
+          return <div key={others.indexOf(product)} className="product-recommended">
+            <img src={size >= 1050 ? product.image.desktop.replace("./assets", "") : size >= 700 ? product.image.tablet.replace("./assets", "") : product.image.mobile.replace("./assets", "")} alt="" />
+            <h5>{product.name}</h5>
+            <Link to={`/product/${product.slug}`}>
+              <div className="orange-button">
+                See Product
+              </div>
+            </Link>
+          </div>
+        })}
+      </div>
+    </div>
+    <div className="products-categories">
+      <ProductsCategories />
+    </div>
+    <BringingYouTheBest />
   </Wrapper>)
 }
 
 const Wrapper = styled.div`
+  padding-bottom: 5rem;
+
+  .products-categories {
+    margin-top: 8rem;
+  }
+
+  .product-recommended img{
+    width: 100%;
+    border-radius: 0.8rem;
+  }
+
+  .product-recommended {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 7rem;
+    row-gap: 2.5rem;
+  }
+
+  .product-recomendation-div h5:nth-child(1) {
+    margin-bottom: -3rem;
+  }
+
+  .product-recomendation-div {
+    width: 87%;
+    max-width: 32.7rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-galery-first {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+  }
+
+  .product-galery-second img {
+    height: 36.8rem;
+    width: 100%;
+    border-radius: 0.8rem;
+  }
+
+  .product-galery-first img {
+    height: 17.4rem;
+    width: 100%;
+    border-radius: 0.8rem;
+  }
+
+  .product-galery {
+    width: 87%;
+    max-width: 32.7rem;
+    margin-top: 7rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+  }
 
   .product-description h5 {
     font-style: normal;
@@ -129,8 +227,6 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     row-gap: 6rem;
-    margin-bottom: 7rem;
-    /* aquiiiiiiiiiiiiiiiiiiiiiiiiiiii */
   }
 
   .product-features {
@@ -202,6 +298,48 @@ const Wrapper = styled.div`
 
   @media (min-width: 700px) {
 
+    .product-recommended {
+      width: 22.3rem;
+    }
+
+    .products-categories {
+      margin-bottom: 12rem;
+    }
+
+    .only-the-recommendations {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      max-width: 69rem;
+      column-gap: 1.1rem;
+      width: 100%;
+    }
+
+    .product-recomendation-div {
+      max-width: 69rem;
+      margin-top: 10rem;
+      flex-direction: column;
+      align-items: center;
+      width: 92%;
+    }
+
+    .product-galery {
+      margin-top: 10rem;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      flex-direction: row;
+      column-gap: 2rem;
+      row-gap: 0;
+      width: 92%;
+      max-width: 69rem;
+      height: 36.8rem;
+    }
+
+    .product-galery-first {
+      height: 36.8rem;
+    }
+
     .product-description h5 {
       line-height: 3.6rem;
       letter-spacing: 0.114286rem;
@@ -219,14 +357,14 @@ const Wrapper = styled.div`
     }
 
     .product-description {
-    margin-top: 7rem;
-    width: 92%;
-    max-width: 68.9rem;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    flex-direction: column;
-    row-gap: 7rem;
+      width: 92%;
+      max-width: 68.9rem;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      flex-direction: column;
+      row-gap: 10rem;
+      margin-top: 10rem;
     }
 
     .product-detail img {
@@ -268,6 +406,65 @@ const Wrapper = styled.div`
   }
 
   @media (min-width: 1050px) {
+
+    .product-recommended {
+      width: 35rem;
+    }
+
+    .products-categories {
+      margin-bottom: 18rem;
+    }
+
+    .only-the-recommendations {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      max-width: 111rem;
+      column-gap: 3rem;
+      width: 100%;
+      margin-top: 2.5rem;
+    }
+
+    .product-recomendation-div h5 {
+      font-size: 34px;
+      line-height: 40px;
+    }
+
+    .product-recomendation-div {
+      max-width: 111rem;
+      margin-top: 12rem;
+    }
+
+    .product-galery {
+      margin-top: 9rem;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      flex-direction: row;
+      column-gap: 3rem;
+      row-gap: 0;
+      width: 92%;
+      max-width: 111rem;
+      height: 59.2rem;
+    }
+
+    .product-galery-second {
+      width: 63.5rem;
+    }
+
+    .product-galery-second img {
+      height: 59.2rem;
+    }
+
+    .product-galery-first img {
+      height: 28rem;
+    }
+
+    .product-galery-first {
+      height: 59.2rem;
+      width: 44.5rem;
+      justify-content: space-between;
+    }
 
     .product-box {
       flex-direction: column;
