@@ -5,8 +5,8 @@ import {
   SIDEBAR_OPEN,
   SIDEBAR_CLOSE,
   ADD_TO_CART,
-  REMOVE_CART_ITEM,
-  TOGGLE_CART_ITEM_AMOUNT,
+  INCREASE_AMOUNT,
+  DECREASE_AMOUNT,
   CLEAR_CART,
   COUNT_CART_TOTALS
 } from './actions.js'
@@ -48,6 +48,43 @@ const reducer = (state, action) => {
       }
       return { ...state, cart: [...state.cart, newItem] }
     }
+  }
+  if (action.type === CLEAR_CART) {
+    return { ...state, cart: [] }
+  }
+  if (action.type === COUNT_CART_TOTALS) {
+    const { total_items, total_amount } = state.cart.reduce((total, cartItem) => {
+      const { amount, price } = cartItem
+
+      total.total_items += amount
+      total.total_amount += price * amount
+      return total
+    },
+      {
+        total_items: 0,
+        total_amount: 0,
+      })
+    return { ...state, total_items, total_amount }
+  }
+  if (action.type === INCREASE_AMOUNT) {
+    let tempCart = state.cart.map((cartItem) => {
+      if (cartItem.id === action.payload) {
+        return { ...cartItem, amount: cartItem.amount + 1 }
+      }
+      return cartItem
+    })
+    return { ...state, cart: tempCart }
+  }
+  if (action.type === DECREASE_AMOUNT) {
+    let tempCart = state.cart
+      .map((cartItem) => {
+        if (cartItem.id === action.payload) {
+          return { ...cartItem, amount: cartItem.amount - 1 }
+        }
+        return cartItem
+      })
+      .filter((cartItem) => cartItem.amount !== 0)
+    return { ...state, cart: tempCart }
   }
 
 

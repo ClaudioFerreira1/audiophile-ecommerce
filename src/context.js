@@ -7,21 +7,30 @@ import {
   SIDEBAR_CLOSE,
   ADD_TO_CART,
   REMOVE_CART_ITEM,
-  TOGGLE_CART_ITEM_AMOUNT,
+  INCREASE_AMOUNT,
+  DECREASE_AMOUNT,
   CLEAR_CART,
   COUNT_CART_TOTALS
 } from './actions.js'
 
+const getLocalStorage = () => {
+  let cart = localStorage.getItem('cart')
+  if (cart) {
+    return JSON.parse(localStorage.getItem('cart'))
+  } else {
+    return []
+  }
+}
+
 const initialState = {
-  isCartModalOpen: true,
+  isCartModalOpen: false,
   isSideBarOpen: false,
-  cart: [],
+  cart: getLocalStorage(),
   total_items: 0,
   total_amount: 0,
   shipping_fee: 50,
   vat_value: 0,
 }
-
 
 const AppContext = React.createContext()
 
@@ -55,15 +64,23 @@ export const AppProvider = ({ children }) => {
   const removeItem = (id) => {
     dispatch({ type: REMOVE_CART_ITEM, payload: { id } })
   }
-  const toggleAmount = (id, value) => {
-    dispatch({ type: TOGGLE_CART_ITEM_AMOUNT, payload: { id, value } })
+  const increase = (id) => {
+    dispatch({ type: INCREASE_AMOUNT, payload: id })
+  }
+  const decrease = (id) => {
+    dispatch({ type: DECREASE_AMOUNT, payload: id })
   }
   const clearCart = () => {
     dispatch({ type: CLEAR_CART })
   }
 
+  useEffect(() => {
+    dispatch({ type: COUNT_CART_TOTALS })
+    localStorage.setItem('cart', JSON.stringify(state.cart))
+  }, [state.cart])
+
   return (
-    <AppContext.Provider value={{ ...state, openCartModal, closeCartModal, openSideBar, closeSideBar, addToCart }}>{children}</AppContext.Provider>
+    <AppContext.Provider value={{ ...state, openCartModal, closeCartModal, openSideBar, closeSideBar, addToCart, removeItem, increase, decrease, clearCart }}>{children}</AppContext.Provider>
   )
 }
 

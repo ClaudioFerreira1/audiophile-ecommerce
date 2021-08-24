@@ -4,12 +4,12 @@ import { useGlobalContext } from '../context'
 import cartIcon from '../assets/shared/desktop/icon-cart.svg'
 
 const CartButton = () => {
-  const { openCartModal } = useGlobalContext();
+  const { openCartModal, total_items } = useGlobalContext();
 
   return (
     <CartBtn onClick={openCartModal}>
       <img src={cartIcon} alt="cart icon" />
-      <span className='cart-value'>12</span>
+      <span className={`${total_items > 0 ? "cart-value" : "display-none"}`}>{total_items}</span>
     </CartBtn>
   )
 }
@@ -17,6 +17,10 @@ const CartButton = () => {
 const CartBtn = styled.button`
   img {
     transform: scale(1.15);
+  }
+
+  span.display-none {
+    display: none;
   }
 
   .cart-value {
