@@ -5,9 +5,11 @@ import data from '../data/data.json'
 import AmountButton from '../components/AmountButton'
 import BringingYouTheBest from "../components/BringingYouTheBest.js"
 import ProductsCategories from "../components/ProductsCategories.js"
+import { useGlobalContext } from '../context'
 import { Link } from 'react-router-dom'
 
 const SingleProduct = () => {
+  const { addToCart } = useGlobalContext();
   const [size, setSize] = useState(window.innerWidth);
   const [amount, setAmount] = useState(1)
   const { slug } = useParams();
@@ -19,7 +21,10 @@ const SingleProduct = () => {
   };
 
   useEffect(() => {
-    window.addEventListener('resize', checkSize)
+    window.addEventListener('resize', checkSize);
+    return () => {
+      window.removeEventListener('resize', checkSize);
+    }
   }, [])
 
   const {
@@ -29,7 +34,6 @@ const SingleProduct = () => {
     new: new_label,
     description,
     price,
-    cartImage,
     includes,
     features,
     gallery: { first, second, third },
@@ -65,7 +69,7 @@ const SingleProduct = () => {
         <h6>${price.toLocaleString()}</h6>
         <div className="action-buttons">
           <AmountButton amount={amount} increase={increase} decrease={decrease} />
-          <div className="orange-button">
+          <div className="orange-button" onClick={() => addToCart(id, slug, name, price, amount)}>
             add to cart
           </div>
         </div>
@@ -101,7 +105,7 @@ const SingleProduct = () => {
           return <div key={others.indexOf(product)} className="product-recommended">
             <img src={size >= 1050 ? product.image.desktop.replace("./assets", "") : size >= 700 ? product.image.tablet.replace("./assets", "") : product.image.mobile.replace("./assets", "")} alt="" />
             <h5>{product.name}</h5>
-            <Link to={`/product/${product.slug}`}>
+            <Link to={`/product/${product.slug}`} onClick={() => setAmount(1)}>
               <div className="orange-button">
                 See Product
               </div>
