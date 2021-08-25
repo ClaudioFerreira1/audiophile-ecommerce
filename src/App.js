@@ -24,10 +24,10 @@ const App = () => {
             <Earphones />
           </Route>
           <Route exact path='/product/:slug' children={<SingleProduct />} />
-          {/* <Route exact path='/checkout'>
-          <Checkout />
-        </Route>
-        <Route path='*'>
+          <Route exact path='/checkout'>
+            <Checkout />
+          </Route>
+          {/* <Route path='*'>
           <Error />
         </Route> */}
         </Switch>

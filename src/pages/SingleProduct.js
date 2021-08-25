@@ -298,6 +298,9 @@ const Wrapper = styled.div`
     line-height: 2.5rem;
     color: #000000;
     font-family: 'Manrope';
+    &:hover {
+      color: #D87D4A;
+    }
   }
 
   @media (min-width: 700px) {

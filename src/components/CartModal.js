@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { useGlobalContext } from '../context'
 import { Link } from 'react-router-dom'
-import AmountButton from './AmountButton.js'
 
 
 const CartModal = () => {
@@ -22,10 +21,12 @@ const CartModal = () => {
             </div> : <div className="cart-list">
               {cart.map((item) => {
                 return <div className="cart-item" key={item.id}>
-                  <img src={`/cart/image-${item.slug}.jpg`} alt="item icon" />
-                  <div className="item-description">
-                    <h4>{item.name.replace(/Headphones|Speaker|Wireless Earphones/g, "")}</h4>
-                    <p>${item.price.toLocaleString()}</p>
+                  <div className="cart-item-first-information">
+                    <img src={`/cart/image-${item.slug}.jpg`} alt="item icon" />
+                    <div className="item-description">
+                      <h4>{item.name.replace(/Headphones|Speaker|Wireless Earphones/g, "")}</h4>
+                      <p>${item.price.toLocaleString()}</p>
+                    </div>
                   </div>
                   <div className="amount-btns">
                     <div className="change-amount" onClick={() => decrease(item.id)}>-</div>
@@ -39,7 +40,7 @@ const CartModal = () => {
               <p>TOTAL</p>
               <h6>${total_amount.toLocaleString()}</h6>
             </div>
-            <Link to="/checkout">
+            <Link to="/checkout" onClick={closeCartModal}>
               <div className="orange-button">
                 Checkout
               </div>
@@ -54,6 +55,12 @@ const ModalOverlay = styled.div`
   .orange-button {
     width: 100%;
     margin-bottom: 3.1rem;
+  }
+
+  .cart-item-first-information {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1.2rem;
   }
 
   .amount-btns {
@@ -117,7 +124,7 @@ const ModalOverlay = styled.div`
   .item-description {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     row-gap: 0.5rem;
     width: 7rem;
   }
@@ -180,6 +187,9 @@ const ModalOverlay = styled.div`
     mix-blend-mode: normal;
     opacity: 0.5;
     font-family: "Manrope";
+    &:hover {
+      color: #D87D4A;
+    }
   }
 
   .cart-modal-content {
