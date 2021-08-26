@@ -40,9 +40,9 @@ const CartModal = () => {
               <p>TOTAL</p>
               <h6>${total_amount.toLocaleString()}</h6>
             </div>
-            <Link to="/checkout" onClick={closeCartModal}>
+            <Link to={cart.length < 1 ? "/" : "/checkout"} onClick={closeCartModal}>
               <div className="orange-button">
-                Checkout
+                {cart.length < 1 ? "GO SHOP" : "CHECKOUT"}
               </div>
             </Link>
           </div>
