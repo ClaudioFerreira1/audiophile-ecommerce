@@ -14,28 +14,30 @@ const CartModal = () => {
           <div className="cart-modal-content">
             <div className="cart-modal-content-header">
               <h6>CART({total_items})</h6>
-              <button type="button" onClick={clearCart}>Remove all</button>
+              {cart.length < 1 ? "" :
+                <button type="button" onClick={clearCart}>Remove all</button>}
             </div>
             {(cart.length < 1) ? <div className="empty-cart">
               <h6>The cart is empty.</h6>
-            </div> : <div className="cart-list">
-              {cart.map((item) => {
-                return <div className="cart-item" key={item.id}>
-                  <div className="cart-item-first-information">
-                    <img src={`/cart/image-${item.slug}.jpg`} alt="item icon" />
-                    <div className="item-description">
-                      <h4>{item.name.replace(/Headphones|Speaker|Wireless Earphones/g, "")}</h4>
-                      <p>${item.price.toLocaleString()}</p>
+            </div> :
+              <div className="cart-list">
+                {cart.map((item) => {
+                  return <div className="cart-item" key={item.id}>
+                    <div className="cart-item-first-information">
+                      <img src={`/cart/image-${item.slug}.jpg`} alt="item icon" />
+                      <div className="item-description">
+                        <h4>{item.name.replace(/Headphones|Speaker|Wireless Earphones/g, "")}</h4>
+                        <p>${item.price.toLocaleString()}</p>
+                      </div>
+                    </div>
+                    <div className="amount-btns">
+                      <div className="change-amount" onClick={() => decrease(item.id)}>-</div>
+                      <div>{item.amount}</div>
+                      <div className="change-amount" onClick={() => increase(item.id)}>+</div>
                     </div>
                   </div>
-                  <div className="amount-btns">
-                    <div className="change-amount" onClick={() => decrease(item.id)}>-</div>
-                    <div>{item.amount}</div>
-                    <div className="change-amount" onClick={() => increase(item.id)}>+</div>
-                  </div>
-                </div>
-              })}
-            </div>}
+                })}
+              </div>}
             <div className="cart-modal-total">
               <p>TOTAL</p>
               <h6>${total_amount.toLocaleString()}</h6>
