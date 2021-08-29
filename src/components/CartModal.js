@@ -209,8 +209,6 @@ const ModalOverlay = styled.div`
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  /* display: grid;
-  place-items: center; */
   padding-top: 11.4rem;
   transition: all 0.3s linear;
   visibility: hidden;
@@ -242,7 +240,7 @@ const ModalOverlay = styled.div`
 @media (min-width: 720px) {
   .modal-container {
     width: 37.7rem;
-    height: 48.8rem;
+    /* height: 48.8rem; */
     margin-right: 4rem;
   }
 }

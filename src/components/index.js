@@ -5,6 +5,7 @@ import CartModal from './CartModal'
 import ZX9HomeComponent from './ZX9HomeComponent'
 import ScrollToTop from './ScrollToTop'
 import AmountButton from './AmountButton'
+import OrderConfirmationModal from './OrderConfirmationModal'
 
 
 export {
@@ -14,5 +15,6 @@ export {
   CartModal,
   ZX9HomeComponent,
   ScrollToTop,
-  AmountButton
+  AmountButton,
+  OrderConfirmationModal,
 }

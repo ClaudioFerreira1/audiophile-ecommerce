@@ -4,6 +4,7 @@ import Speakers from './Speakers'
 import Earphones from './Earphones'
 import SingleProduct from './SingleProduct'
 import Checkout from './Checkout'
+import Error from './Error'
 
 export {
   Home,
@@ -11,5 +12,6 @@ export {
   Speakers,
   Earphones,
   SingleProduct,
-  Checkout
+  Checkout,
+  Error
 }

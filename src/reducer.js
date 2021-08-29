@@ -8,7 +8,9 @@ import {
   INCREASE_AMOUNT,
   DECREASE_AMOUNT,
   CLEAR_CART,
-  COUNT_CART_TOTALS
+  COUNT_CART_TOTALS,
+  ORDER_CONFIRMATION_MODAL_OPEN,
+  ORDER_CONFIRMATION_MODAL_CLOSE
 } from './actions.js'
 
 const reducer = (state, action) => {
@@ -17,6 +19,12 @@ const reducer = (state, action) => {
   }
   if (action.type === CART_MODAL_CLOSE) {
     return { ...state, isCartModalOpen: false }
+  }
+  if (action.type === ORDER_CONFIRMATION_MODAL_OPEN) {
+    return { ...state, isOrderConfirmationModalOpen: true }
+  }
+  if (action.type === ORDER_CONFIRMATION_MODAL_CLOSE) {
+    return { ...state, isOrderConfirmationModalOpen: false }
   }
   if (action.type === SIDEBAR_OPEN) {
     return { ...state, isSideBarOpen: true }

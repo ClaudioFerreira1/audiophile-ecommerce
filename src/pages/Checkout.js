@@ -10,10 +10,11 @@ const Checkout = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({ mode: "onBlur" });
   let history = useHistory();
   const [paymentMethod, setPaymentMethod] = useState('emoney');
-  const { decrease, increase, cart, total_amount } = useGlobalContext();
+  const { decrease, increase, cart, total_amount, openOrderConfirmationModal } = useGlobalContext();
 
   const manageData = (data) => {
     console.log(JSON.stringify(data))
+    openOrderConfirmationModal()
   }
 
   return (<>
@@ -232,6 +233,7 @@ const Checkout = () => {
               </div>
             </Link> :
               <input type="submit" id="submit-button" value="Continue & Pay" />}
+            {/* <button type="button" onClick={openOrderConfirmationModal}>Teste</button> */}
           </div>
         </div>
       </form>

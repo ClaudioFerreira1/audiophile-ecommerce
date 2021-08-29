@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { Navbar, Sidebar, Footer, CartModal, ScrollToTop } from './components'
+import { Navbar, Sidebar, Footer, CartModal, ScrollToTop, OrderConfirmationModal } from './components'
 import { Home, Headphones, Speakers, Earphones, SingleProduct, Checkout, Error } from './pages'
 
 const App = () => {
@@ -26,10 +26,11 @@ const App = () => {
           <Route exact path='/product/:slug' children={<SingleProduct />} />
           <Route exact path='/checkout'>
             <Checkout />
+            <OrderConfirmationModal />
           </Route>
-          {/* <Route path='*'>
-          <Error />
-        </Route> */}
+          <Route path='*'>
+            <Error />
+          </Route>
         </Switch>
         <Footer />
       </ScrollToTop>

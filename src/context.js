@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useReducer } from 'react'
+import React, { useState, useEffect, useContext, useReducer } from 'react'
 import reducer from './reducer'
 import {
   CART_MODAL_OPEN,
@@ -10,7 +10,9 @@ import {
   INCREASE_AMOUNT,
   DECREASE_AMOUNT,
   CLEAR_CART,
-  COUNT_CART_TOTALS
+  COUNT_CART_TOTALS,
+  ORDER_CONFIRMATION_MODAL_OPEN,
+  ORDER_CONFIRMATION_MODAL_CLOSE
 } from './actions.js'
 
 const getLocalStorage = () => {
@@ -24,6 +26,7 @@ const getLocalStorage = () => {
 
 const initialState = {
   isCartModalOpen: false,
+  isOrderConfirmationModalOpen: false,
   isSideBarOpen: false,
   cart: getLocalStorage(),
   total_items: 0,
@@ -36,6 +39,7 @@ const AppContext = React.createContext()
 
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
+  const [showOneOrder, setShowOneOrder] = useState(false);
 
   const openCartModal = () => {
     document.body.style.overflow = 'hidden';
@@ -48,6 +52,14 @@ export const AppProvider = ({ children }) => {
       document.body.style.overflow = 'unset';
     }
     dispatch({ type: CART_MODAL_CLOSE })
+  }
+  const openOrderConfirmationModal = () => {
+    document.body.style.overflow = 'hidden';
+    dispatch({ type: ORDER_CONFIRMATION_MODAL_OPEN })
+  }
+  const closeOrderConfirmationModal = () => {
+    document.body.style.overflow = 'unset';
+    dispatch({ type: ORDER_CONFIRMATION_MODAL_CLOSE })
   }
   const openSideBar = () => {
     document.body.style.overflow = 'hidden';
@@ -68,6 +80,7 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: INCREASE_AMOUNT, payload: id })
   }
   const decrease = (id) => {
+    setShowOneOrder(false)
     dispatch({ type: DECREASE_AMOUNT, payload: id })
   }
   const clearCart = () => {
@@ -80,7 +93,7 @@ export const AppProvider = ({ children }) => {
   }, [state.cart])
 
   return (
-    <AppContext.Provider value={{ ...state, openCartModal, closeCartModal, openSideBar, closeSideBar, addToCart, removeItem, increase, decrease, clearCart }}>{children}</AppContext.Provider>
+    <AppContext.Provider value={{ ...state, openCartModal, closeCartModal, openSideBar, closeSideBar, addToCart, removeItem, increase, decrease, clearCart, openOrderConfirmationModal, closeOrderConfirmationModal, showOneOrder, setShowOneOrder }}>{children}</AppContext.Provider>
   )
 }
 
